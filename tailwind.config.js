@@ -11,10 +11,11 @@ module.exports = {
       ice800: '#E8F8E8',
 
       gray900: '#787880',
-      gray800: '#414141',
+      gray800: '#41414C',
       gray700: '#5A5A66',
       gray600: '#BFBFCC',
-      gray500: '#F0F2F5',
+      gray500: '#E1E3E5',
+      gray400: '#F0F2F5',
 
       orange900: '#F1972C',
 
