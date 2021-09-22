@@ -2,7 +2,11 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      outline: {
+        red: '1px solid #eb3b35',
+      },
+    },
     colors: {
       white: '#FFFFFF',
       black: '#000000',
@@ -21,8 +25,7 @@ module.exports = {
 
       green900: '#36B236',
 
-      red900: '#EB3B35'
-
+      red900: '#EB3B35',
     },
     fontFamily: {
       ibm: ['IBM Plex Sans', 'sans-serif'],
