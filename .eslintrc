@@ -4,6 +4,7 @@
     "next/core-web-vitals"
   ],
   "rules": {
-    "@next/next/no-document-import-in-page": "off"
+    "@next/next/no-document-import-in-page": "off",
+    "import/no-anonymous-default-export": "off"
   }
 }
