@@ -1,9 +1,7 @@
-import useAuth from '../hooks/useAuth'
+import { useLoginContext } from '../contexts/LoginContext'
 
 export default function Home() {
-  const { user } = useAuth()
+  const { user } = useLoginContext()
 
-  console.log(user)
-
-  return <h1>Home</h1>
+  return <h1>{user.email}</h1>
 }

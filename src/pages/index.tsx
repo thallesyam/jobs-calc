@@ -3,10 +3,11 @@ import Link from 'next/link'
 import * as yup from 'yup'
 import { useState } from 'react'
 import { useRouter } from 'next/dist/client/router'
-import { Magic } from 'magic-sdk'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast, ToastContainer } from 'react-toastify'
+
+import { useLoginContext } from '../contexts/LoginContext'
 
 import { LoginSection } from './components/LogoSection'
 
@@ -20,6 +21,7 @@ const schema = yup.object({
 
 export default function Login() {
   const router = useRouter()
+  const { user, signIn } = useLoginContext()
   const toastError = () => toast.error('Ocorreu um erro inesperado')
   const [isLoading, setIsLoading] = useState(false)
   const { register, handleSubmit, formState } = useForm<any, LoginUserFormData>(
@@ -35,16 +37,9 @@ export default function Login() {
 
     const { email } = values
 
-    const resolver = await new Magic(
-      process.env.NEXT_PUBLIC_MAGIC_PUB_KEY
-    ).auth.loginWithMagicLink({ email })
+    signIn(email)
 
-    const request = await fetch('/api/login', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${resolver}` },
-    })
-
-    if (request.ok) {
+    if (user) {
       router.push('/home')
       setIsLoading(false)
     } else {
@@ -55,7 +50,7 @@ export default function Login() {
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -65,7 +60,7 @@ export default function Login() {
           `,
           }}
         />
-      </Head>
+      </Head> */}
       <main className="h-screen w-full grid grid-cols-2 content-center justify-center bg-gray400">
         <LoginSection />
 
