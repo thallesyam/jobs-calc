@@ -1,7 +1,14 @@
+import Head from 'next/head'
 import { useLoginContext } from '../contexts/LoginContext'
 
 export default function Home() {
   const { user } = useLoginContext()
 
-  return <h1>{user.email}</h1>
+  return (
+    <>
+      <Head>
+        <title>Home | Jobscalc</title>
+      </Head>
+    </>
+  )
 }

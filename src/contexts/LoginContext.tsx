@@ -30,7 +30,7 @@ export function LoginContextProvider({ children }: LoginConxtexProviderProps) {
     ;(async () => {
       const { data } = await api.get('/getUser')
 
-      if (data) setUser(data.user)
+      if (data.user) setUser(data.user)
     })()
   }, [])
 

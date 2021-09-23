@@ -50,7 +50,7 @@ export default function Login() {
 
   return (
     <>
-      {/* <Head>
+      <Head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -60,7 +60,9 @@ export default function Login() {
           `,
           }}
         />
-      </Head> */}
+
+        <title>Login | Jobscalc</title>
+      </Head>
       <main className="h-screen w-full grid grid-cols-2 content-center justify-center bg-gray400">
         <LoginSection />
 
