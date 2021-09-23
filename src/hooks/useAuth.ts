@@ -7,7 +7,7 @@ function get(route) {
 }
 
 export default function useAuth() {
-  const { data: user, error, mutate } = useSWR("/api/user", get)
+  const { data: user, error } = useSWR("/api/user", get)
   const loading = user === undefined
 
   return {
