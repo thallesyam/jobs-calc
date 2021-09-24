@@ -8,6 +8,8 @@ import { fauna } from '../../services/fauna'
 
 type User = {
   email: string
+  name?: string
+  image?: string
 }
 
 type UserData = {
@@ -20,7 +22,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     
   try {
     const getUser = await Iron.unseal(CookieService.getAuthToken(req.cookies), process.env.ENCRYPTION_SECRET, Iron.defaults)
-
 
     if(getUser.email) {
       const response = await fauna.query<UserData>(

@@ -37,7 +37,7 @@ export default function Login() {
 
     const { email } = values
 
-    signIn(email)
+    await signIn(email)
 
     if (user) {
       router.push('/home')

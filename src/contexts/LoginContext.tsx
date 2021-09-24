@@ -14,6 +14,8 @@ type LoginConxtexProviderProps = {
 
 type UserProps = {
   email: string
+  name?: string
+  image?: string
 }
 
 type LoginContextData = {

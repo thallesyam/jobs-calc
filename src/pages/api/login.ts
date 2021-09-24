@@ -11,6 +11,8 @@ let magic = new Magic(process.env.MAGIC_SECRET_KEY)
 
 type User = {
   email: string
+  name?: string
+  image?: string
 }
 
 type UserData = {
