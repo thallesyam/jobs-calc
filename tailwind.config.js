@@ -13,6 +13,7 @@ module.exports = {
     colors: {
       white: '#FFFFFF',
       black: '#000000',
+      hover: '#F1F1F1',
 
       ice900: '#FCFDFF',
       ice800: '#E8F8E8',
@@ -27,6 +28,7 @@ module.exports = {
       border900: '#4F4F5B',
 
       orange900: '#F1972C',
+      orange800: '#FFB45B',
 
       green900: '#36B236',
 

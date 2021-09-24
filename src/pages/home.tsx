@@ -1,14 +1,8 @@
 import Head from 'next/head'
 
-import { useLoginContext } from '../contexts/LoginContext'
-
 import { Header } from '../components/Header'
 
 export default function Home() {
-  const { user } = useLoginContext()
-
-  console.log(user)
-
   return (
     <>
       <Head>

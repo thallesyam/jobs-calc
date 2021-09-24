@@ -23,13 +23,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const getUser = await Iron.unseal(CookieService.getAuthToken(req.cookies), process.env.ENCRYPTION_SECRET, Iron.defaults)
 
-    if(getUser.email) {
+    if(getUser) {
       const response = await fauna.query<UserData>(
-        q.If(
-          q.Match(q.Index('user_by_email'), q.Casefold( getUser.email )),
-          q.Get(q.Match(q.Index('user_by_email'), q.Casefold( getUser.email ))),
-          null
-        )
+        q.Get(q.Match(q.Index('user_by_email'), q.Casefold( getUser.email ))),
       )
   
       const { data: { email } } = response
@@ -37,6 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       const user = {
         email
       }
+
   
       res.status(200).json({ user })
     }
