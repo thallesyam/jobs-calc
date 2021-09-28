@@ -53,9 +53,16 @@ export function Header({ isHome = false, title, prevLink }: HeaderProps) {
 
                 <div className="w-16 h-16 bg-gradient-to-r from-gray700 to-gray800 rounded-full border-2 border-orange900 flex items-center justify-center">
                   <p className="text-white text-2xl ma0 font-inter font-semibold">
-                    {user.image
-                      ? user.image
-                      : user.email?.charAt(0).toUpperCase()}
+                    {user.image ? (
+                      <Image
+                        width="64"
+                        height="64"
+                        alt="Name"
+                        src={user.image}
+                      />
+                    ) : (
+                      user.email?.charAt(0).toUpperCase()
+                    )}
                   </p>
                 </div>
               </div>

@@ -10,6 +10,9 @@ module.exports = {
     maxWidth: {
       wild: '1120px',
     },
+    maxHeight: {
+      profilebox: '556px',
+    },
     colors: {
       white: '#FFFFFF',
       black: '#000000',
