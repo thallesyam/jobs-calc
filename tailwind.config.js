@@ -16,7 +16,6 @@ module.exports = {
       hover: '#F1F1F1',
 
       ice900: '#FCFDFF',
-      ice800: '#E8F8E8',
 
       gray900: '#787880',
       gray800: '#41414C',
@@ -31,8 +30,10 @@ module.exports = {
       orange800: '#FFB45B',
 
       green900: '#36B236',
+      green100: '#E8F8E8',
 
       red900: '#EB3B35',
+      red100: '#FAECEB',
     },
     fontFamily: {
       ibm: ['IBM Plex Sans', 'sans-serif'],

@@ -7,15 +7,17 @@ import { HeaderInfo } from '../HeaderInfo'
 
 type HeaderProps = {
   isHome?: boolean
+  title?: string
+  prevLink?: string
 }
 
-export function Header({ isHome = false }: HeaderProps) {
+export function Header({ isHome = false, title, prevLink }: HeaderProps) {
   const { user } = useLoginContext()
 
   return (
     <>
       {isHome ? (
-        <header className="bg-gray800">
+        <header className="bg-gray800 pb-12">
           <section className="max-w-wild w-screen mx-auto">
             <section className="pt-4 mb-4 mx-auto flex justify-between items-center">
               <Image
@@ -42,8 +44,8 @@ export function Header({ isHome = false }: HeaderProps) {
                   <h1 className="text-xl text-ice900 font-ibm font-semibold">
                     {user.name ? user.name : user.email}
                   </h1>
-                  <Link href="#">
-                    <a className="text-sm text-gray600 font-ibm hover:text-orange900 hover:underline transition-all	block">
+                  <Link href="/profile">
+                    <a className="text-sm text-gray600 font-ibm hover:text-orange900 hover:underline transition-all	inline-block">
                       Ver perfil
                     </a>
                   </Link>
@@ -65,7 +67,43 @@ export function Header({ isHome = false }: HeaderProps) {
           </section>
         </header>
       ) : (
-        <h1>Thalles</h1>
+        <header className="w-screen bg-gray800 p-8">
+          <section className="max-w-wild mx-auto flex align-center justify-center">
+            <div className="w-2/4">
+              <Link href={prevLink}>
+                <a className="">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23 12L1 12"
+                      stroke="#BFBFCC"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M8 19L1 12L8 5"
+                      stroke="#BFBFCC"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
+              </Link>
+            </div>
+            <div className="w-2/4">
+              <p className="text-gray600 text-base font-inter font-semibold">
+                {title}
+              </p>
+            </div>
+          </section>
+        </header>
       )}
     </>
   )
