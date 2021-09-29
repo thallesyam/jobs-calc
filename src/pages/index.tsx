@@ -90,7 +90,7 @@ export default function Login() {
             </Link>
             <button
               disabled={isLoading}
-              className="bg-orange900 rounded p-5 text-white font-ibm font-semibold text-xl hover:opacity-80 transition duration-500 ease-in-out w-full disabledcursor-not-allowed	"
+              className="bg-orange900 rounded p-5 text-white font-ibm font-semibold text-xl hover:opacity-80 transition duration-500 ease-in-out w-full disabled:cursor-not-allowed	"
             >
               {isLoading ? (
                 <div className="flex justify-center items-center">

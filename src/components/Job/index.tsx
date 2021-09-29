@@ -5,7 +5,7 @@ import { DeleteIcon } from '../../../public/assets/icons/DeleteIcon'
 
 export function Job() {
   return (
-    <section className="w-full bg-ice900 max-h-24 h-full rounded flex items-center justify-between px-8 border border-gray500">
+    <section className="w-full bg-ice900 rounded flex items-center justify-between px-8 py-7 border border-gray500">
       <div className="flex items-center gap-8">
         <p className="text-base	text-gray600 font-ibm font-semibold">1</p>
         <p className="text-2xl text-gray800 font-ibm font-semibold">

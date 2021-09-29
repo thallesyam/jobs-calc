@@ -9,9 +9,11 @@ module.exports = {
     },
     maxWidth: {
       wild: '1120px',
+      'input-small': '308px',
     },
     maxHeight: {
       profilebox: '556px',
+      heightMain: '90vh',
     },
     colors: {
       white: '#FFFFFF',
