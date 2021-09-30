@@ -30,7 +30,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     jobname,
     hoursDayjob,
     allhourJob,
-    jobValue,
+    isWorking: true,
+    jobValue: new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(jobValue),
   }
 
   const { data } = await fauna.query<Job>(

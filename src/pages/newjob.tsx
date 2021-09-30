@@ -151,9 +151,9 @@ export default function NewJob() {
             <>
               <MoneyOnIcon />
               <h3 className="font-inter font-normal text-gray700 mt-6 ">
-                Preencha os dados ao lado para ver o valor do projeto
+                O valor do projeto ficou em
               </h3>
-              <p className="font-inter font-semibold mb-11">
+              <p className="font-inter font-semibold mb-11 text-gray700">
                 {formatedValue} reais
               </p>
             </>

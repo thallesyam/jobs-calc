@@ -50,9 +50,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }).format(valueHour),
         ref
       }
-
-      console.log(user)
-
   
       res.status(200).json({ user })
     }
