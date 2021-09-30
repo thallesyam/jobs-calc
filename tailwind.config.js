@@ -9,7 +9,7 @@ module.exports = {
     },
     maxWidth: {
       wild: '1120px',
-      'input-small': '308px',
+      'input-small': '335px',
     },
     maxHeight: {
       profilebox: '556px',

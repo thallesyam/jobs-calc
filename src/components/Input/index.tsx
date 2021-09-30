@@ -3,6 +3,7 @@ import { forwardRef, ReactNode } from 'react'
 type InputProps = {
   type?: 'text' | 'password' | 'email'
   defaultValue?: string | number
+  size?: 'large' | 'normal'
   error: string
   placeholder?: string
   children?: ReactNode
@@ -14,6 +15,7 @@ export const Input = forwardRef(
     {
       type = 'text',
       error,
+      size = 'normal',
       placeholder,
       children,
       yupRef,
@@ -37,10 +39,14 @@ export const Input = forwardRef(
             defaultValue={defaultValue}
             type={type}
             placeholder={placeholder}
-            className={`w-full max-w-input-small h-14 px-6 border border-gray500 rounded `}
+            className={`w-full ${
+              size === 'large' ? '' : 'max-w-input-small'
+            } h-14 px-6 border border-gray500 rounded ${
+              error && 'outline-red'
+            } `}
           />
 
-          {error}
+          <p className="text-red900 text-xs">{error}</p>
         </div>
       </>
     )

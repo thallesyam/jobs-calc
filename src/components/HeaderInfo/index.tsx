@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router'
 import { Button } from '../Button'
 
 const data = [
@@ -19,6 +20,12 @@ const data = [
 ]
 
 export function HeaderInfo() {
+  const router = useRouter()
+
+  function handleClickNewJob() {
+    router.push('/newjob')
+  }
+
   return (
     <section className="flex justify-between items-center pb-10">
       <div className="flex items-center gap-10">
@@ -29,7 +36,12 @@ export function HeaderInfo() {
           </div>
         ))}
       </div>
-      <Button addPlus color="orange900" size="large">
+      <Button
+        handleClick={handleClickNewJob}
+        addPlus
+        color="orange900"
+        size="large"
+      >
         adicionar Novo Job
       </Button>
     </section>

@@ -1,4 +1,3 @@
-import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import * as yup from 'yup'
@@ -12,8 +11,6 @@ import { Header } from '../components/Header'
 import { useLoginContext } from '../contexts/LoginContext'
 import { api } from '../services/api'
 
-import CookieService from '../utils/cookies'
-
 type UserDataProps = {
   name: string
   imageUrl: string
@@ -26,10 +23,22 @@ type UserDataProps = {
 const schema = yup.object({
   name: yup.string().required('Nome obrigatório'),
   imageUrl: yup.string().required('Link da imagem Obrigatório'),
-  yieldMonth: yup.number().required('Valor mensal obrigatório'),
-  hoursDay: yup.number().required('Horas diárias Obrigatórias'),
-  daysWeek: yup.number().required('Dias semanais Obrigatórios'),
-  vacationWeek: yup.number().required('Semanas de férias Obrigatórias'),
+  yieldMonth: yup
+    .number()
+    .required('Valor mensal obrigatório')
+    .typeError('Valor mensal obrigatório'),
+  hoursDay: yup
+    .number()
+    .required('Horas diárias Obrigatórias')
+    .typeError('Horas diárias Obrigatórias'),
+  daysWeek: yup
+    .number()
+    .required('Dias semanais Obrigatórios')
+    .typeError('Dias semanais Obrigatórios'),
+  vacationWeek: yup
+    .number()
+    .required('Semanas de férias Obrigatórias')
+    .typeError('Semanas de férias Obrigatórias'),
 })
 
 export default function Profile() {
