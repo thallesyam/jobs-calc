@@ -1,5 +1,5 @@
 import { Magic } from 'magic-sdk'
-import { useRouter } from 'next/dist/client/router'
+
 import {
   createContext,
   ReactNode,
@@ -14,9 +14,15 @@ type LoginConxtexProviderProps = {
 }
 
 type UserProps = {
+  ref: any
   email: string
   name?: string
   image?: string
+  yieldMonth: number
+  hoursDay: number
+  daysWeek: number
+  vacationWeek: number
+  valueHour: number
 }
 
 type LoginContextData = {
@@ -29,7 +35,6 @@ const LoginContext = createContext({} as LoginContextData)
 
 export function LoginContextProvider({ children }: LoginConxtexProviderProps) {
   const [user, setUser] = useState({} as UserProps)
-  const router = useRouter()
 
   async function getUser() {
     const { data } = await api.get('/getUser')

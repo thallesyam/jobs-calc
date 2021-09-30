@@ -2,6 +2,8 @@ import { forwardRef, ReactNode } from 'react'
 
 type InputProps = {
   type?: 'text' | 'password' | 'email'
+  defaultValue?: string | number
+  error: string
   placeholder?: string
   children?: ReactNode
   yupRef: any
@@ -9,7 +11,15 @@ type InputProps = {
 
 export const Input = forwardRef(
   (
-    { type = 'text', placeholder, children, yupRef, ...rest }: InputProps,
+    {
+      type = 'text',
+      error,
+      placeholder,
+      children,
+      yupRef,
+      defaultValue,
+      ...rest
+    }: InputProps,
     ref
   ) => {
     return (
@@ -24,10 +34,13 @@ export const Input = forwardRef(
           <input
             {...yupRef}
             {...rest}
+            defaultValue={defaultValue}
             type={type}
             placeholder={placeholder}
             className={`w-full max-w-input-small h-14 px-6 border border-gray500 rounded `}
           />
+
+          {error}
         </div>
       </>
     )
