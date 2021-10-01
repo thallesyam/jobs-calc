@@ -9,9 +9,15 @@ type HeaderProps = {
   isHome?: boolean
   title?: string
   prevLink?: string
+  count?: number
 }
 
-export function Header({ isHome = false, title, prevLink }: HeaderProps) {
+export function Header({
+  isHome = false,
+  title,
+  prevLink,
+  count,
+}: HeaderProps) {
   const { user } = useLoginContext()
 
   return (
@@ -35,7 +41,7 @@ export function Header({ isHome = false, title, prevLink }: HeaderProps) {
                   height="20"
                 />
                 <p className="ice900 text-base font-inter font-medium text-ice900">
-                  Você tem 2 horas livres no seu dia
+                  Você tem {user.hoursDay - count} horas livres no seu dia
                 </p>
               </div>
 
