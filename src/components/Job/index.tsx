@@ -1,6 +1,9 @@
-import { JobTag } from '../JobTag'
+import { useState } from 'react'
 
 import { JobItemProps } from '../../pages/home'
+
+import { ModalComponent } from '../Modal'
+import { JobTag } from '../JobTag'
 
 import { EditIcon } from '../../../public/assets/icons/EditIcon'
 import { DeleteIcon } from '../../../public/assets/icons/DeleteIcon'
@@ -10,7 +13,27 @@ type JobProps = {
 }
 
 export function Job({ job }: JobProps) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isModalEdit, setIsModalEdit] = useState(false)
+  const [isModalDelete, setIsModalDelete] = useState(false)
+
   const { jobname, days, jobValue, isWorking } = job
+
+  function handleCloseModal() {
+    setIsOpen(false)
+  }
+
+  function handleOpenEditModal() {
+    setIsOpen(true)
+    setIsModalEdit(true)
+    setIsModalDelete(false)
+  }
+
+  function handleOpenCloseModal() {
+    setIsOpen(true)
+    setIsModalDelete(true)
+    setIsModalEdit(false)
+  }
 
   return (
     <section className="w-full bg-ice900 rounded flex items-center justify-between px-8 py-7 border border-gray500">
@@ -38,13 +61,23 @@ export function Job({ job }: JobProps) {
       <JobTag isWorking={isWorking} />
 
       <div className="flex items-center gap-2">
-        <button className="border border-gray500 p-2 rounded transition-all hover:opacity-70">
+        <button
+          onClick={handleOpenEditModal}
+          className="border border-gray500 p-2 rounded transition-all hover:opacity-70"
+        >
           <EditIcon />
         </button>
-        <button className="border border-gray500 p-2 rounded transition-all hover:opacity-70">
+        <button
+          onClick={handleOpenCloseModal}
+          className="border border-gray500 p-2 rounded transition-all hover:opacity-70"
+        >
           <DeleteIcon />
         </button>
       </div>
+
+      <ModalComponent isOpen={isOpen} handleCloseModal={handleCloseModal}>
+        Thalles
+      </ModalComponent>
     </section>
   )
 }
