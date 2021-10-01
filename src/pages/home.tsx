@@ -79,7 +79,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   )
 
   const { data }: JobItemServerProps = response
-
   let count = 0
 
   const jobs = data.map((item) => {
