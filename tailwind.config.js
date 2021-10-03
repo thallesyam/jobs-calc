@@ -10,10 +10,12 @@ module.exports = {
     maxWidth: {
       wild: '1120px',
       'input-small': '335px',
+      modalwidth: '448px',
     },
     maxHeight: {
       profilebox: '556px',
       heightMain: '90vh',
+      modalheight: '340px',
     },
     colors: {
       white: '#FFFFFF',

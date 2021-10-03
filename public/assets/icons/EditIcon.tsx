@@ -1,8 +1,13 @@
-export function EditIcon() {
+type EditIcon = {
+  width?: string
+  height?: string
+}
+
+export function EditIcon({ height = '25', width = '24' }: EditIcon) {
   return (
     <svg
-      width="24"
-      height="25"
+      width={width}
+      height={height}
       viewBox="0 0 24 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

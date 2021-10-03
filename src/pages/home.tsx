@@ -7,6 +7,7 @@ import { fauna } from '../services/fauna'
 
 import { Header } from '../components/Header'
 import { JobsList } from '../components/JobsList'
+import { useEffect, useState } from 'react'
 
 export type JobItemProps = {
   userId: string
@@ -16,12 +17,14 @@ export type JobItemProps = {
   jobValue: number
   days: number
   isWorking: boolean
+  ref: any
 }
 
 export type JobItemServerProps = {
   data: [
     {
       jobs: {
+        ref: any
         data: JobItemProps
       }
     }
@@ -35,6 +38,13 @@ export type JobProps = {
 }
 
 export default function Home({ jobs, count }: JobProps) {
+  const [jobsData, setJobsData] = useState(jobs)
+
+  useEffect(() => {
+    console.log('Mudei')
+    setJobsData(jobs)
+  }, [jobs])
+
   return (
     <>
       <Head>
@@ -53,7 +63,7 @@ export default function Home({ jobs, count }: JobProps) {
 
       <Header isHome count={count} />
 
-      <JobsList jobs={jobs} />
+      <JobsList jobs={jobsData} />
     </>
   )
 }
@@ -79,16 +89,19 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   )
 
   const { data }: JobItemServerProps = response
+
   let count = 0
 
   const jobs = data.map((item) => {
     const {
       jobs: {
+        ref,
         data: { userId, jobname, hoursDayjob, allhourJob, jobValue, isWorking },
       },
     } = item
 
     return {
+      ref: JSON.stringify(ref),
       userId,
       jobname,
       hoursDayjob,
@@ -104,6 +117,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   })
 
   return {
-    props: { jobs, count }, // will be passed to the page component as props
+    props: { jobs, count },
+    // will be passed to the page component as props
   }
 }
