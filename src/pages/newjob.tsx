@@ -110,11 +110,11 @@ export default function NewJob() {
 
         <title>Novo job | Jobscalc</title>
       </Head>
-      <Header prevLink={'/home'} title="Meu perfil" />
+      <Header prevLink={'/home'} title="Novo Trabalho" />
 
       <form
         onSubmit={handleSubmit(handleCreatejob)}
-        className="w-screen max-w-wild mx-auto flex gap-28 mt-16"
+        className="w-screen max-w-wild mx-auto flex gap-28 sm:gap-7 mt-16 px-4 sm:flex-col"
       >
         <section className="w-full">
           <h3 className="text-3xl text-gray700 font-ibm font-semibold mb-4">
@@ -149,7 +149,7 @@ export default function NewJob() {
           </section>
         </section>
 
-        <section className="bg-white px-16 flex flex-col items-center justify-center text-center rounded border border-gray600 ">
+        <section className="bg-white py-4 px-16 flex flex-col items-center justify-center text-center rounded border border-gray600 sm:mb-6">
           {isNotEmptyValue ? (
             <>
               <MoneyOnIcon />
@@ -170,7 +170,10 @@ export default function NewJob() {
           )}
 
           <div className="flex items-center gap-2">
-            <button className="w-48 h-12 bg-green900 rounded text-ice900 text-sm uppercase font-ibm font-bold transition-all hover:opacity-70">
+            <button
+              disabled={!!!user?.name}
+              className="w-48 h-12 bg-green900 rounded text-ice900 text-sm uppercase font-ibm font-bold transition-all hover:opacity-70 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               Salvar dados
             </button>
             <button

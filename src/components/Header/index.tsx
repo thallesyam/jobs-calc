@@ -32,16 +32,25 @@ export function Header({
     <>
       {isHome ? (
         <header className="bg-gray800 pb-12">
-          <section className="max-w-wild w-screen mx-auto">
+          <section className="max-w-wild w-screen mx-auto px-4">
             <section className="pt-4 mb-4 mx-auto flex justify-between items-center">
-              <Image
-                src="/assets/icons/logo.svg"
-                alt="Logo"
-                width="208"
-                height="48"
-              />
-
-              <div className="flex align-center gap-2	">
+              <div className="esm:hidden">
+                <Image
+                  src="/assets/icons/logo.svg"
+                  alt="Logo"
+                  width="208"
+                  height="48"
+                />
+              </div>
+              <div className="esm:block hidden">
+                <Image
+                  src="/assets/icons/logo.svg"
+                  alt="Logo"
+                  width="150"
+                  height="48"
+                />
+              </div>
+              <div className="flex align-center gap-2 sm:hidden	">
                 <Image
                   src="/assets/icons/alert.svg"
                   alt="Alert"
@@ -55,7 +64,7 @@ export function Header({
 
               <div className="flex align-center gap-4">
                 <div className="flex flex-col justify-center text-right">
-                  <h1 className="text-xl text-ice900 font-ibm font-semibold">
+                  <h1 className="text-xl text-ice900 font-ibm font-semibold esm:text-base">
                     {user.name ? user.name : user.email}
                   </h1>
                   <Link href="/profile">
@@ -82,6 +91,18 @@ export function Header({
                 </div>
               </div>
             </section>
+
+            <div className="hidden sm:flex sm:align-center sm:gap-2 sm:justify-center	sm:mb-6">
+              <Image
+                src="/assets/icons/alert.svg"
+                alt="Alert"
+                width="20"
+                height="20"
+              />
+              <p className="ice900 text-base font-inter font-medium text-ice900">
+                Você tem {user.hoursDay - count} horas livres no seu dia
+              </p>
+            </div>
 
             <div className="w-100 h-px mb-8 bg-gray900" />
 
@@ -119,7 +140,7 @@ export function Header({
                 </a>
               </Link>
             </div>
-            <div className="w-2/4">
+            <div className="w-2/4 sm:text-right">
               <p className="text-gray600 text-base font-inter font-semibold">
                 {title}
               </p>

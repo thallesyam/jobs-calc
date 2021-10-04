@@ -10,6 +10,8 @@
 
 body {
   background-color: #f0f2f5;
+  width: 100vw;
+  height: 100vh;
 }
 
 .ReactModal__Overlay {
@@ -19,4 +21,13 @@ body {
 
   background-color: #5a5a66 !important;
   opacity: 0.9 !important;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  opacity: 0.5;
 }

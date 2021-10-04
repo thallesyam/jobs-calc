@@ -37,8 +37,8 @@ export function HeaderInfo({ countJobs }: HeaderInfoProps) {
   }
 
   return (
-    <section className="flex justify-between items-center pb-10">
-      <div className="flex items-center gap-10">
+    <section className="flex justify-between items-center pb-10 sm:flex-col sm:justify-center">
+      <div className="flex items-center gap-10 sm:mb-6">
         {data.map(({ id, qtd, text }) => (
           <div key={id}>
             <h2 className="font-inter text-white font-bold text-2xl">{qtd}</h2>

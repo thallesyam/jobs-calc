@@ -28,7 +28,7 @@ export const Input = forwardRef(
       <>
         <div className="w-full mb-6">
           {children && (
-            <p className="text-gray900 text-base font-ibm font-medium mb-4">
+            <p className="text-gray900 text-base font-ibm font-medium mb-4 md:text-sm esm:text-xs">
               {children}
             </p>
           )}

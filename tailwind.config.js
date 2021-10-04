@@ -11,6 +11,15 @@ module.exports = {
         red: '1px solid #eb3b35',
       },
     },
+    screens: {
+      sm: { max: '768px' },
+      // => @media (max-width: 768px) { ... }
+
+      md: { max: '960px' },
+      // => @media (max-width: 960px) { ... }
+      esm: { max: '648px' },
+    },
+
     maxWidth: {
       wild: '1120px',
       'input-small': '335px',

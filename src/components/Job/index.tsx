@@ -71,15 +71,21 @@ export function Job({ job }: JobProps) {
   }
 
   return (
-    <section className="w-full bg-ice900 rounded flex items-center justify-between px-8 py-7 border border-gray500">
-      <div className="flex items-center gap-8">
-        <p className="text-base	text-gray600 font-ibm font-semibold">1</p>
-        <p className="text-2xl text-gray800 font-ibm font-semibold w-64 truncate">
+    <section
+      className={`w-full bg-ice900 rounded flex items-center justify-between gap-3 px-8  py-7 border border-gray500 ${
+        isWorking ? 'esm:border-green900' : 'esm:border-red900'
+      }`}
+    >
+      <div className="flex items-center gap-8 esm:gap-3">
+        <p className="text-base	text-gray600 font-ibm font-semibold esm:hidden">
+          1
+        </p>
+        <p className="text-2xl text-gray800 font-ibm font-semibold w-64 md:w-32 esm:w-full truncate ">
           {jobname}
         </p>
       </div>
 
-      <div>
+      <div className="sm:hidden">
         <p className="text-xs	text-gray600 font-inter font-semibold">Prazo</p>
         <p className="text-base text-gray900 font-inter font-semibold">
           {days > 1 ? `${days} dias para entrega` : `${days} dia para entrega`}

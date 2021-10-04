@@ -90,9 +90,9 @@ export default function Profile() {
 
       <form
         onSubmit={handleSubmit(handleAddInfoUser)}
-        className="w-screen max-w-wild mx-auto flex items-center gap-28 h-screen max-h-heightMain"
+        className="w-screen max-w-wild mx-auto flex items-center gap-28 sm:gap-7 h-screen max-h-heightMain px-4 sm:flex-col"
       >
-        <section className="bg-white px-16 py-16 flex flex-col items-center justify-center text-center rounded border border-gray600 h-screen max-h-profilebox">
+        <section className="bg-white px-16 py-16 sm:mt-4 flex flex-col items-center justify-center text-center rounded border border-gray600 h-screen max-h-profilebox">
           <div className="w-40 h-40 bg-gradient-to-r from-gray700 to-gray800 rounded-full border-2 border-orange900 flex items-center justify-center mb-6">
             {user.image ? (
               <Image
@@ -132,7 +132,7 @@ export default function Profile() {
 
           <div className="w-full border border-gray500 mb-8" />
 
-          <section className="flex items-center gap-6 mb-14">
+          <section className="flex items-center gap-6 mb-14 sm:mb-6">
             <Input
               defaultValue={user.name ? user.name : ''}
               error={errors.name?.message}
