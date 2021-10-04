@@ -1,9 +1,9 @@
-import { useRouter } from 'next/dist/client/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { JobItemProps } from '../../pages/home'
 import { api } from '../../services/api'
+
+import { JobItemProps } from '../../pages/home'
 
 import { ModalComponent } from '../Modal'
 import { JobTag } from '../JobTag'
@@ -17,16 +17,13 @@ type JobProps = {
 
 export function Job({ job }: JobProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const [jobData, setJobData] = useState(job)
+  const [jobData, setJobDta] = useState(job)
   const [isModalEdit, setIsModalEdit] = useState(false)
   const [isModalDelete, setIsModalDelete] = useState(false)
   const { handleSubmit } = useForm<any, any>({})
 
   const { jobname, days, jobValue, isWorking, ref } = jobData
   const jobId = JSON.parse(ref)['@ref'].id
-
-  const router = useRouter()
-  const refreshData = () => router.replace(router.asPath)
 
   function handleCloseModal() {
     setIsOpen(false)
@@ -50,7 +47,7 @@ export function Job({ job }: JobProps) {
         jobId,
       })
 
-      refreshData()
+      window.location.href = '/home'
       handleCloseModal()
     } catch (err) {
       console.log(err)
@@ -63,8 +60,8 @@ export function Job({ job }: JobProps) {
         jobId,
       })
 
+      window.location.href = '/home'
       handleCloseModal()
-      refreshData()
     } catch (err) {
       console.log(err)
     }
@@ -74,7 +71,7 @@ export function Job({ job }: JobProps) {
     <section className="w-full bg-ice900 rounded flex items-center justify-between px-8 py-7 border border-gray500">
       <div className="flex items-center gap-8">
         <p className="text-base	text-gray600 font-ibm font-semibold">1</p>
-        <p className="text-2xl text-gray800 font-ibm font-semibold">
+        <p className="text-2xl text-gray800 font-ibm font-semibold w-64 truncate">
           {jobname}
         </p>
       </div>

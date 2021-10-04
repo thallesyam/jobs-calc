@@ -5,11 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast, ToastContainer } from 'react-toastify'
 
-import { Input } from '../components/Input/index'
-import { Header } from '../components/Header'
-
 import { useLoginContext } from '../contexts/LoginContext'
 import { api } from '../services/api'
+
+import { Input } from '../components/Input/index'
+import { Header } from '../components/Header'
 
 type UserDataProps = {
   name: string

@@ -5,11 +5,18 @@ import { useLoginContext } from '../../contexts/LoginContext'
 
 import { HeaderInfo } from '../HeaderInfo'
 
+type CountJobsProps = {
+  allJobs: number
+  workingJobs: number
+  notWorkingJobs: number
+}
+
 type HeaderProps = {
   isHome?: boolean
   title?: string
   prevLink?: string
   count?: number
+  countJobs?: CountJobsProps
 }
 
 export function Header({
@@ -17,6 +24,7 @@ export function Header({
   title,
   prevLink,
   count,
+  countJobs,
 }: HeaderProps) {
   const { user } = useLoginContext()
 
@@ -77,7 +85,7 @@ export function Header({
 
             <div className="w-100 h-px mb-8 bg-gray900" />
 
-            <HeaderInfo />
+            <HeaderInfo countJobs={countJobs} />
           </section>
         </header>
       ) : (

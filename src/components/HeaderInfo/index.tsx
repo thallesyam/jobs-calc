@@ -1,26 +1,36 @@
 import { useRouter } from 'next/dist/client/router'
 import { Button } from '../Button'
 
-const data = [
-  {
-    id: 1,
-    qtd: 12,
-    text: 'Projetos ao total',
-  },
-  {
-    id: 2,
-    qtd: 7,
-    text: 'Em andamento',
-  },
-  {
-    id: 3,
-    qtd: 4,
-    text: 'Encerrados',
-  },
-]
+type CountJobsProps = {
+  allJobs: number
+  workingJobs: number
+  notWorkingJobs: number
+}
 
-export function HeaderInfo() {
+type HeaderInfoProps = {
+  countJobs: CountJobsProps
+}
+
+export function HeaderInfo({ countJobs }: HeaderInfoProps) {
   const router = useRouter()
+
+  const data = [
+    {
+      id: 1,
+      qtd: countJobs.allJobs,
+      text: countJobs.allJobs > 1 ? 'Projetos ao total' : 'Projeto ao total',
+    },
+    {
+      id: 2,
+      qtd: countJobs.workingJobs,
+      text: 'Em andamento',
+    },
+    {
+      id: 3,
+      qtd: countJobs.notWorkingJobs,
+      text: countJobs.notWorkingJobs > 1 ? 'Encerrados' : 'Encerrado',
+    },
+  ]
 
   function handleClickNewJob() {
     router.push('/newjob')

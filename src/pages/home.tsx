@@ -7,7 +7,6 @@ import { fauna } from '../services/fauna'
 
 import { Header } from '../components/Header'
 import { JobsList } from '../components/JobsList'
-import { useEffect, useState } from 'react'
 
 export type JobItemProps = {
   userId: string
@@ -38,12 +37,22 @@ export type JobProps = {
 }
 
 export default function Home({ jobs, count }: JobProps) {
-  const [jobsData, setJobsData] = useState(jobs)
+  let workingJobs = 0
+  let notWorkingJobs = 0
 
-  useEffect(() => {
-    console.log('Mudei')
-    setJobsData(jobs)
-  }, [jobs])
+  jobs.forEach((job) => {
+    if (job.isWorking) {
+      workingJobs += 1
+    } else {
+      notWorkingJobs += 1
+    }
+  })
+
+  const countJobs = {
+    allJobs: jobs.length,
+    workingJobs,
+    notWorkingJobs,
+  }
 
   return (
     <>
@@ -61,9 +70,9 @@ export default function Home({ jobs, count }: JobProps) {
         <title>Home | Jobscalc</title>
       </Head>
 
-      <Header isHome count={count} />
+      <Header isHome count={count} countJobs={countJobs} />
 
-      <JobsList jobs={jobsData} />
+      <JobsList jobs={jobs} />
     </>
   )
 }
@@ -118,6 +127,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: { jobs, count },
-    // will be passed to the page component as props
   }
 }

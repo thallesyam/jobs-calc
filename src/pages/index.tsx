@@ -9,7 +9,7 @@ import { toast, ToastContainer } from 'react-toastify'
 
 import { useLoginContext } from '../contexts/LoginContext'
 
-import { LoginSection } from './components/LogoSection'
+import { LoginSection } from '../components/LogoSection'
 
 type LoginUserFormData = {
   email: string

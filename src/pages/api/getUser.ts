@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { query as q } from 'faunadb'
 import Iron from '@hapi/iron'
+
 import CookieService from '../../utils/cookies'
 
 import { fauna } from '../../services/fauna'

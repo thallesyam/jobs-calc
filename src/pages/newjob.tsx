@@ -4,12 +4,13 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast, ToastContainer } from 'react-toastify'
-
-import { Input } from '../components/Input/index'
-import { Header } from '../components/Header'
+import { useRouter } from 'next/dist/client/router'
 
 import { api } from '../services/api'
 import { useLoginContext } from '../contexts/LoginContext'
+
+import { Input } from '../components/Input/index'
+import { Header } from '../components/Header'
 
 import { MoneyOffIcon } from '../../public/assets/icons/MoneyOffIcon'
 import { DeleteIcon } from '../../public/assets/icons/DeleteIcon'
@@ -45,6 +46,7 @@ export default function NewJob() {
   const { user } = useLoginContext()
   const [isNotEmptyValue, setIsNotEmptyValue] = useState(false)
   const hourValue = user.yieldMonth / (user.daysWeek * user.hoursDay)
+  const router = useRouter()
 
   const { register, handleSubmit, formState, watch, reset } = useForm<
     any,
@@ -73,6 +75,7 @@ export default function NewJob() {
 
     try {
       await api.post('/createJob', data)
+      router.push('/home')
     } catch (error) {
       toastError()
     }
