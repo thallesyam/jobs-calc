@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast, ToastContainer } from 'react-toastify'
 
 import { api } from '../../services/api'
 
@@ -16,6 +17,8 @@ type JobProps = {
 }
 
 export function Job({ job }: JobProps) {
+  const toastError = () => toast.error('Ocorreu um erro inesperado')
+
   const [isOpen, setIsOpen] = useState(false)
   const [jobData, setJobDta] = useState(job)
   const [isModalEdit, setIsModalEdit] = useState(false)
@@ -50,7 +53,7 @@ export function Job({ job }: JobProps) {
       window.location.href = '/home'
       handleCloseModal()
     } catch (err) {
-      console.log(err)
+      toastError()
     }
   }
 
@@ -63,7 +66,7 @@ export function Job({ job }: JobProps) {
       window.location.href = '/home'
       handleCloseModal()
     } catch (err) {
-      console.log(err)
+      toastError()
     }
   }
 
@@ -165,6 +168,7 @@ export function Job({ job }: JobProps) {
           </form>
         </ModalComponent>
       )}
+      <ToastContainer />
     </section>
   )
 }
