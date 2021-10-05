@@ -83,11 +83,6 @@ export default function Login() {
               <p className="mb-2 mt-0 text-red900">{errors.email?.message}</p>
             )}
 
-            <Link href="#">
-              <a className="text-gray900 text-base font-medium font-inter mb-5 inline-block">
-                Não tem uma conta ?
-              </a>
-            </Link>
             <button
               disabled={isLoading}
               className="bg-orange900 rounded p-5 text-white font-ibm font-semibold text-xl hover:opacity-80 transition duration-500 ease-in-out w-full disabled:cursor-not-allowed	"
