@@ -33,8 +33,8 @@ export function Header({
       {isHome ? (
         <header className="bg-gray800 pb-12">
           <section className="max-w-wild w-screen mx-auto px-4">
-            <section className="pt-4 mb-4 mx-auto flex justify-between items-center">
-              <div className="esm:hidden">
+            <section className="pt-4 mb-4 mx-auto flex justify-between items-center gap-2">
+              <div className="sm:hidden">
                 <Image
                   src="/assets/icons/logo.svg"
                   alt="Logo"
@@ -46,11 +46,11 @@ export function Header({
                 <Image
                   src="/assets/icons/logo.svg"
                   alt="Logo"
-                  width="150"
+                  width="100"
                   height="48"
                 />
               </div>
-              <div className="flex align-center gap-2 sm:hidden	">
+              <div className="flex align-center gap-2 sm:hidden">
                 <Image
                   src="/assets/icons/alert.svg"
                   alt="Alert"
@@ -58,13 +58,26 @@ export function Header({
                   height="20"
                 />
                 <p className="ice900 text-base font-inter font-medium text-ice900">
-                  Você tem {user.hoursDay - count} horas livres no seu dia
+                  {user.hoursDay ? (
+                    `Você tem ${
+                      Number(user.hoursDay) - Number(count)
+                    } horas livres
+                    no seu dia`
+                  ) : (
+                    <>
+                      <Link href="/profile">
+                        <a className="hover:text-orange900 hover:underline transition-all">
+                          Falta alguns dados no seu perfil
+                        </a>
+                      </Link>
+                    </>
+                  )}
                 </p>
               </div>
 
               <div className="flex align-center gap-4">
                 <div className="flex flex-col justify-center text-right">
-                  <h1 className="text-xl text-ice900 font-ibm font-semibold esm:text-base">
+                  <h1 className="text-xl sm:text-sm text-ice900 font-ibm font-semibold esm:text-sm">
                     {user.name ? user.name : user.email}
                   </h1>
                   <Link href="/profile">
@@ -100,7 +113,20 @@ export function Header({
                 height="20"
               />
               <p className="ice900 text-base font-inter font-medium text-ice900">
-                Você tem {user.hoursDay - count} horas livres no seu dia
+                {user.hoursDay ? (
+                  `Você tem ${
+                    Number(user.hoursDay) - Number(count)
+                  } horas livres
+                    no seu dia`
+                ) : (
+                  <>
+                    <Link href="/profile">
+                      <a className="hover:text-orange900 hover:underline transition-all">
+                        Falta alguns dados no seu perfil
+                      </a>
+                    </Link>
+                  </>
+                )}
               </p>
             </div>
 

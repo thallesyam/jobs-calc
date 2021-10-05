@@ -71,6 +71,8 @@ export default function Profile() {
     }
   }
 
+  console.log(user.hoursDay)
+
   return (
     <>
       <Head>
@@ -90,9 +92,9 @@ export default function Profile() {
 
       <form
         onSubmit={handleSubmit(handleAddInfoUser)}
-        className="w-screen max-w-wild mx-auto flex items-center gap-28 sm:gap-7 h-screen max-h-heightMain px-4 sm:flex-col"
+        className="w-screen max-w-wild  mx-auto flex items-center gap-28 sm:gap-7 h-screen max-h-heightMain px-4 sm:flex-col"
       >
-        <section className="bg-white px-16 py-16 sm:mt-4 flex flex-col items-center justify-center text-center rounded border border-gray600 h-screen max-h-profilebox">
+        <section className="bg-white px-16 sm:px-10 py-16 sm:mt-4 flex flex-col items-center justify-center text-center rounded border border-gray600 h-screen max-h-profilebox">
           <div className="w-40 h-40 bg-gradient-to-r from-gray700 to-gray800 rounded-full border-2 border-orange900 flex items-center justify-center mb-6">
             {user.image ? (
               <Image
@@ -114,10 +116,16 @@ export default function Profile() {
           </h3>
 
           <p className="text-lg text-gray700 font-inter font-normal mb-6">
-            O valor da sua hora é{' '}
-            <span className="block font-bold">
-              {user.valueHour && `${user.valueHour} reais`}
-            </span>
+            {user.hoursDay !== undefined ? (
+              <>
+                O valor da sua hora é{' '}
+                <span className="block font-bold">
+                  {user.valueHour && `${user.valueHour} reais`}
+                </span>
+              </>
+            ) : (
+              'Preencha os dados para saber a sua hora'
+            )}
           </p>
 
           <button className="w-48 h-12 bg-green900 rounded text-ice900 text-sm uppercase font-ibm font-bold transition-all hover:opacity-70">

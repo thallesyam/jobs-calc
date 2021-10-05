@@ -42,7 +42,9 @@ export function HeaderInfo({ countJobs }: HeaderInfoProps) {
         {data.map(({ id, qtd, text }) => (
           <div key={id}>
             <h2 className="font-inter text-white font-bold text-2xl">{qtd}</h2>
-            <p className="font-inter text-gray900 text-base">{text}</p>
+            <p className="font-inter text-gray900 text-base sm:text-xs">
+              {text}
+            </p>
           </div>
         ))}
       </div>
