@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import * as yup from 'yup'
+import { useRouter } from 'next/dist/client/router'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast, ToastContainer } from 'react-toastify'
@@ -42,6 +43,7 @@ const schema = yup.object({
 })
 
 export default function Profile() {
+  const router = useRouter()
   const { user } = useLoginContext()
   const toastError = () => toast.error('Ocorreu um erro inesperado')
 
@@ -66,6 +68,8 @@ export default function Profile() {
 
     try {
       await api.post('/createUserInfo', userData)
+
+      router.push('/home')
     } catch (error) {
       toastError()
     }
