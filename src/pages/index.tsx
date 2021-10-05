@@ -63,10 +63,10 @@ export default function Login() {
 
         <title>Login | Jobscalc</title>
       </Head>
-      <main className="h-screen w-full grid grid-cols-2 content-center justify-center bg-gray400">
+      <main className="h-screen w-full grid grid-cols-2 sm:block content-center justify-center bg-gray400">
         <LoginSection />
 
-        <section className="h-screen flex flex-col justify-center p-11 w-5/6 mx-auto">
+        <section className="h-screen sm:w-full flex flex-col justify-center p-11 w-5/6 mx-auto">
           <h2 className="text-4xl text-gray700 font-semibold font-ibm mb-12">
             Faça Login
           </h2>
